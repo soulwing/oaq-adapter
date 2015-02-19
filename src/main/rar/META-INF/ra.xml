@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+  http://xmlns.jcp.org/xml/ns/javaee/connector_1_7.xsd"
+  version="1.7">
+  <vendor-name>Virginia Tech</vendor-name>
+  <eis-type>Oracle AQ</eis-type>
+  <resourceadapter-version>11.2</resourceadapter-version>
+  <resourceadapter>
+    <resourceadapter-class>
+      edu.vt.uc.jca.OracleAQResourceAdapter
+    </resourceadapter-class>
+    <config-property>
+      <config-property-name>DatabaseUrl</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value/>
+    </config-property>
+    <config-property>
+      <config-property-name>Username</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value/>
+    </config-property>
+    <config-property>
+      <config-property-name>Password</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value/>
+    </config-property>
+  </resourceadapter>
+</connector>
