@@ -18,7 +18,7 @@
     <module.directory>${project.build.directory}/modules/${module.path}</module.directory>
     <oracle.version>12.1.0.2.0</oracle.version>
     <wildfly.version>9.0.0.Alpha2-SNAPSHOT</wildfly.version>
-    <wildfly.core.version>1.0.0.Alpha18-SNAPSHOT</wildfly.core.version>
+    <wildfly.core.version>1.0.0.Alpha18</wildfly.core.version>
   </properties>
   <build>
     <plugins>
