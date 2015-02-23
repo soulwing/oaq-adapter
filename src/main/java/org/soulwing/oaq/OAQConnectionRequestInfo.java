@@ -18,6 +18,8 @@
  */
 package org.soulwing.oaq;
 
+import static org.soulwing.oaq.OAQLogger.LOGGER;
+
 import java.io.Serializable;
 import java.sql.SQLException;
 
@@ -32,7 +34,7 @@ import oracle.jdbc.xa.client.OracleXADataSource;
  * 
  * @author Carl Harris
  */
-public final class MessageConnectionRequestInfo 
+public final class OAQConnectionRequestInfo 
     implements ConnectionRequestInfo, Serializable, Cloneable {
 
   private static final long serialVersionUID = -4979996165883547540L;
@@ -56,7 +58,8 @@ public final class MessageConnectionRequestInfo
           // TODO: prevent the data source from pooling connections
           dataSource.setURL(getDatabaseUrl());
           dataSource.setUser(getUsername());
-          dataSource.setPassword(getPassword());          
+          dataSource.setPassword(getPassword());
+          LOGGER.fine("created XA data source");
         }
       }
     }
@@ -76,6 +79,7 @@ public final class MessageConnectionRequestInfo
    * @param databaseUrl
    */
   public void setDatabaseUrl(String databaseUrl) {
+    LOGGER.fine("set databaseUrl to '" + databaseUrl + "'"); 
     this.databaseUrl = databaseUrl;
   }
 
@@ -92,6 +96,7 @@ public final class MessageConnectionRequestInfo
    * @param username
    */
   public void setUsername(String username) {
+    LOGGER.fine("set username to '" + username + "'"); 
     this.username = username;
   }
 
@@ -108,6 +113,7 @@ public final class MessageConnectionRequestInfo
    * @param password
    */
   public void setPassword(String password) {
+    LOGGER.fine("set password to '**********'"); 
     this.password = password;
   }
 
@@ -135,8 +141,8 @@ public final class MessageConnectionRequestInfo
   @Override
   public boolean equals(Object obj) {
     if (obj == this) return true;
-    if (!(obj instanceof MessageConnectionRequestInfo)) return false;
-    MessageConnectionRequestInfo that = (MessageConnectionRequestInfo) obj;
+    if (!(obj instanceof OAQConnectionRequestInfo)) return false;
+    OAQConnectionRequestInfo that = (OAQConnectionRequestInfo) obj;
     if (notEqual(this.databaseUrl, that.databaseUrl)) return false;
     if (notEqual(this.username, that.username)) return false;
     if (notEqual(this.password, that.password)) return false;
@@ -160,9 +166,9 @@ public final class MessageConnectionRequestInfo
    * {@inheritDoc}
    */
   @Override
-  public MessageConnectionRequestInfo clone() {
+  public OAQConnectionRequestInfo clone() {
     try {
-      MessageConnectionRequestInfo info = (MessageConnectionRequestInfo) 
+      OAQConnectionRequestInfo info = (OAQConnectionRequestInfo) 
           super.clone();
       info.dataSource = null;
       return info;
@@ -170,6 +176,15 @@ public final class MessageConnectionRequestInfo
     catch (CloneNotSupportedException ex) {
       throw new RuntimeException(ex);
     }
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String toString() {
+    return String.format("{ databaseUrl='%s' username='%s' password='%s' }",
+        databaseUrl, username, password != null ? "**********" : null);
   }
  
 }

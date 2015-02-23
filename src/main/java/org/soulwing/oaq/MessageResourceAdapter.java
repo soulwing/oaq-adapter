@@ -41,7 +41,7 @@ public interface MessageResourceAdapter extends ResourceAdapter {
    * adapter's configuration.
    * @return connection request info
    */
-  MessageConnectionRequestInfo getConnectionRequestInfo();
+  OAQConnectionRequestInfo getConnectionRequestInfo();
 
   /**
    * Creates an AQ connection.
@@ -57,7 +57,7 @@ public interface MessageResourceAdapter extends ResourceAdapter {
    * @return an AQ connection via the receiver's JDBC data source
    * @throws JMSException
    */
-  XAConnection createConnection(MessageConnectionRequestInfo info) 
+  XAConnection createConnection(OAQConnectionRequestInfo info) 
       throws JMSException;
   
 }

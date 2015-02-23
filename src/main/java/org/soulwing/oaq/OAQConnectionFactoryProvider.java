@@ -38,7 +38,7 @@ public class OAQConnectionFactoryProvider
    */
   @Override
   public XAConnectionFactory createConnectionFactory(
-      MessageConnectionRequestInfo info) throws JMSException {
+      OAQConnectionRequestInfo info) throws JMSException {
     try {
       return AQjmsFactory.getXAConnectionFactory(info.getDataSource());
     }

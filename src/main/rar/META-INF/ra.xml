@@ -6,10 +6,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   version="1.7">
   <vendor-name>soulwing.org</vendor-name>
   <eis-type>Oracle AQ</eis-type>
-  <resourceadapter-version>11.2</resourceadapter-version>
+  <resourceadapter-version>12.1</resourceadapter-version>
   <resourceadapter>
     <resourceadapter-class>
-      edu.vt.uc.jca.OracleAQResourceAdapter
+      org.soulwing.oaq.OAQResourceAdapter
     </resourceadapter-class>
     <config-property>
       <config-property-name>DatabaseUrl</config-property-name>

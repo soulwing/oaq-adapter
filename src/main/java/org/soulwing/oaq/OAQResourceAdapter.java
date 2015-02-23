@@ -18,7 +18,7 @@
  */
 package org.soulwing.oaq;
 
-import java.util.logging.Logger;
+import static org.soulwing.oaq.OAQLogger.LOGGER; 
 
 import javax.jms.JMSException;
 import javax.jms.XAConnection;
@@ -39,10 +39,8 @@ import javax.transaction.xa.XAResource;
  */
 public class OAQResourceAdapter implements MessageResourceAdapter {
 
-  private final Logger logger = Logger.getLogger(getClass().getName());
-
-  private final MessageConnectionRequestInfo connectionInfo =
-      new MessageConnectionRequestInfo();
+  private final OAQConnectionRequestInfo connectionInfo =
+      new OAQConnectionRequestInfo();
 
   private final MessageEndpointManager endpointManager;
   private final MessageConnectionFactoryProvider connectionFactoryProvider;
@@ -76,8 +74,7 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
   public void start(BootstrapContext ctx)
       throws ResourceAdapterInternalException {
     this.bootstrapContext = ctx;
-    logger.info("resource adapter " + hashCode() + " started");
-    logger.info("default connection info: " + connectionInfo); 
+    LOGGER.info("resource adapter started; " + connectionInfo);
   }
 
   /**
@@ -88,7 +85,7 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
     endpointManager.dispose();
     bootstrapContext = null;
     connectionFactory = null;
-    logger.info("resource adapter stopped"); 
+    LOGGER.info("resource adapter stopped"); 
   }
 
   /**
@@ -132,11 +129,11 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
         endpoint.stop();
       }
       catch (RuntimeException ex) {
-        logger.warning("failed to stop endpoint: " + ex);
+        LOGGER.warning("failed to stop endpoint: " + ex);
       }
     }
     else {
-      logger.warning("unrecognized activate spec type: " 
+      LOGGER.warning("unrecognized activation spec type: " 
           + activationSpec.getClass().getName());
     }
   }
@@ -183,7 +180,7 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
   @Override
   public XAConnection createConnection(MessageActivationSpec spec)
       throws JMSException {
-    MessageConnectionRequestInfo info = connectionInfo.clone();
+    OAQConnectionRequestInfo info = connectionInfo.clone();
     if (spec.getUsername() != null) {
       info.setUsername(spec.getUsername());
       info.setPassword(spec.getPassword());
@@ -195,7 +192,7 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
    * {@inheritDoc}
    */
   @Override
-  public XAConnection createConnection(MessageConnectionRequestInfo info) 
+  public XAConnection createConnection(OAQConnectionRequestInfo info) 
       throws JMSException {
     return getConnectionFactory().createXAConnection(
         info.getUsername(), info.getPassword());
@@ -220,7 +217,7 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
    * {@inheritDoc}
    */
   @Override
-  public MessageConnectionRequestInfo getConnectionRequestInfo() {
+  public OAQConnectionRequestInfo getConnectionRequestInfo() {
     return connectionInfo;
   }
 

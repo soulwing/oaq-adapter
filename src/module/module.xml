@@ -1,0 +1,17 @@
+<module xmlns="urn:jboss:module:1.0" name="${module.name}" slot="${module.slot}">
+  <resources>
+    <resource-root path="${project.build.finalName}.jar" />
+    <resource-root path="aqapi-${oracle.version}.jar"/>
+    <resource-root path="ojdbc7-${oracle.version}.jar"/>
+    <resource-root path=""/>
+  </resources>
+
+  <dependencies>
+    <module name="org.apache.commons.lang"/>
+    <module name="org.apache.commons.pool"/>
+    <module name="javax.api"/>
+    <module name="javax.jms.api" />    
+    <module name="javax.resource.api"/>
+  </dependencies>
+
+</module>

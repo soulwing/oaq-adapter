@@ -70,10 +70,10 @@ public class OAQManagedConnectionFactory
   @Override
   public ManagedConnection createManagedConnection(Subject subject,
       ConnectionRequestInfo connectionRequestInfo) throws ResourceException {
-    MessageConnectionRequestInfo info = 
+    OAQConnectionRequestInfo info = 
         resourceAdapter.getConnectionRequestInfo();
-    if (connectionRequestInfo instanceof MessageConnectionRequestInfo) {
-      info = (MessageConnectionRequestInfo) connectionRequestInfo;
+    if (connectionRequestInfo instanceof OAQConnectionRequestInfo) {
+      info = (OAQConnectionRequestInfo) connectionRequestInfo;
     }
     try {
       OAQManagedConnection connection = 

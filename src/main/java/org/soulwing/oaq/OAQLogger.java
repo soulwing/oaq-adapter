@@ -1,7 +1,7 @@
 /*
- * File created on Nov 29, 2013 
+ * File created on Feb 23, 2015 
  *
- * Copyright (c) 2013 Carl Harris, Jr.
+ * Copyright (c) Carl Harris, Jr
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,23 +18,16 @@
  */
 package org.soulwing.oaq;
 
-import javax.jms.JMSException;
-import javax.jms.XAConnectionFactory;
+import java.util.logging.Logger;
 
 /**
- * An {@link XAConnectionFactory} provider.
+ * A static logger instance for this package.
  *
  * @author Carl Harris
  */
-interface MessageConnectionFactoryProvider {
+public class OAQLogger {
 
-  /**
-   * Creates an XAConnectionFactory.
-   * @param info
-   * @return connection factory
-   * @throws JMSException
-   */
-  XAConnectionFactory createConnectionFactory(
-      OAQConnectionRequestInfo info) throws JMSException;
+  public static final Logger LOGGER = Logger.getLogger(
+      OAQLogger.class.getPackage().getName());
   
 }
