@@ -10,8 +10,8 @@ provider.
 
 The project for which this was a dependency made a decision to abandon Oracle
 AQ and this resource adapter has never been used in a production capacity. It
-remains here as a reference to other who might be interested in building 
-such a thing, but likely will require some effort to restore it to a working
+remains here as a reference to others who might be interested in building 
+such a thing. It will likely require some effort to restore it to a working
 condition.
 
 In order to build this module, you will need to install the Oracle JDBC driver
