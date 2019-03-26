@@ -26,5 +26,29 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       <config-property-type>java.lang.String</config-property-type>
       <config-property-value/>
     </config-property>
+    <inbound-resourceadapter>
+      <messageadapter>        
+        <messagelistener>
+          <messagelistener-type>javax.jms.MessageListener</messagelistener-type>
+          <activationspec>
+            <activationspec-class>org.soulwing.oaq.MessageActivationSpec</activationspec-class>
+          </activationspec>
+        </messagelistener>       
+      </messageadapter>
+    </inbound-resourceadapter>
+    <adminobject>
+      <adminobject-interface>javax.jms.Queue</adminobject-interface>
+      <adminobject-class>org.soulwing.oaq.AdministeredQueue</adminobject-class>
+      <config-property>
+        <config-property-name>PhysicalName</config-property-name>
+        <config-property-type>java.lang.String</config-property-type>
+        <config-property-value/>
+      </config-property>
+      <config-property>
+        <config-property-name>Owner</config-property-name>
+        <config-property-type>java.lang.String</config-property-type>
+        <config-property-value/>
+      </config-property>
+    </adminobject>
   </resourceadapter>
 </connector>

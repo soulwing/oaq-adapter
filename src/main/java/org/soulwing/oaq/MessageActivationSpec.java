@@ -96,8 +96,8 @@ public class MessageActivationSpec implements ActivationSpec {
   @Override
   public void setResourceAdapter(ResourceAdapter resourceAdapter)
       throws ResourceException {
-    // JCA 1.7 Section 5.3
-    if (resourceAdapter != null) {
+    // JCA 1.7 Section 5.3.3
+    if (this.resourceAdapter != null) {
       throw new ResourceException("resource adapter already set");
     }
     // It must be an instance of our resource adapter

@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.soulwing</groupId>
     <artifactId>soulwing-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>4</version>
   </parent>
   <artifactId>oaq-adapter</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -17,8 +17,8 @@
     <module.path>org/soulwing/oaq/${module.slot}</module.path>
     <module.directory>${project.build.directory}/modules/${module.path}</module.directory>
     <oracle.version>12.1.0.2.0</oracle.version>
-    <wildfly.version>9.0.0.Alpha2-SNAPSHOT</wildfly.version>
-    <wildfly.core.version>1.0.0.Alpha18</wildfly.core.version>
+    <wildfly.version>9.0.0.Final</wildfly.version>
+    <wildfly.core.version>1.0.0.Final</wildfly.core.version>
   </properties>
   <build>
     <plugins>
@@ -164,6 +164,18 @@
       <artifactId>wildfly-server</artifactId>
       <version>${wildfly.core.version}</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly</groupId>
+      <artifactId>wildfly-connector</artifactId>
+      <version>${wildfly.version}</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>commons-lang</groupId>

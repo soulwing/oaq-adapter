@@ -18,7 +18,7 @@
  */
 package org.soulwing.oaq;
 
-import static org.soulwing.oaq.OAQLogger.LOGGER; 
+import static org.soulwing.oaq.OAQLogger.LOGGER;
 
 import javax.jms.JMSException;
 import javax.jms.XAConnection;
@@ -95,6 +95,7 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
   public void endpointActivation(MessageEndpointFactory endpointFactory,
       ActivationSpec activationSpec) throws ResourceException {
 
+    LOGGER.fine("activating endpoint with spec " + activationSpec);
     // JCA 1.7 section 5.3.3
     if (!this.equals(activationSpec.getResourceAdapter())) {
       throw new ResourceException(
@@ -122,6 +123,7 @@ public class OAQResourceAdapter implements MessageResourceAdapter {
   @Override
   public void endpointDeactivation(MessageEndpointFactory endpointFactory,
       ActivationSpec activationSpec) {
+    LOGGER.fine("deactivating endpoint with spec " + activationSpec);
     if (activationSpec instanceof MessageActivationSpec) {
       try {
         MessageEndpointRunner endpoint = endpointManager.remove(
